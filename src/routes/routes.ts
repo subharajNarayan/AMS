@@ -21,7 +21,7 @@ const InternalAssetComponents = lazy(() => import("core/Protected/Maintainance/A
 const InternalComponentLogs = lazy(() => import("core/Protected/Maintainance/ComponentLogs"));
 const InternalManageCategories = lazy(() => import("core/Protected/Maintainance/ManageCategories"));
 const InternalUpdateNotifications = lazy(() => import("core/Protected/Notifications/UpdateNotifications"));
-
+const InternalPracticeTestParameters = lazy(() => import("core/Protected/Practice/PracticeTestParameters"));
 
 const appRoutes: CustomRoute[] = [
     {
@@ -107,6 +107,11 @@ const appRoutes: CustomRoute[] = [
             {
                 path: "/auth/quality-test-parameters",
                 component: InternalQualityTestParameters,
+                type: "authorized",
+            },
+            {
+                path: "/auth/practice-test-parameters",
+                component: InternalPracticeTestParameters,
                 type: "authorized",
             },
             {

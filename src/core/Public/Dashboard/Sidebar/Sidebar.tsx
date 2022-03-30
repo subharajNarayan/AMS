@@ -5,7 +5,7 @@ import {
   MaintainIcon,
   ServiceIcon,
   VisualizationIcon,
-  Notifications,
+  Notifications
 } from "assets/images/xd";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -110,7 +110,7 @@ const Sidebar = (props: Props) => {
     {
       name: "practice",
       title: t("home:practice"),
-      link: "/auth/quality-test-parameters",
+      link: "/auth/practice-test-parameters",
       icon: ServiceIcon,
     },
     
@@ -218,26 +218,6 @@ const Sidebar = (props: Props) => {
           icon: ServiceIcon,
         },
       ],
-    },
-    {
-      name: "practice",
-      title: t("sidebar:practice"),
-      icon: ServiceIcon,
-      link: "",
-      children: [
-        {
-          name: "supplyvisualization",
-          title: t("sidebar:supplyVisualization"),
-          link: "/scheme/" + slug + "/supply-visualization",
-          icon: ServiceIcon,
-        },
-        {
-          name: "qualityTestResults",
-          title: t("qualityTestResult"),
-          link: "/scheme/" + slug + "/quality-test-results",
-          icon: ServiceIcon,
-        },
-      ]
     }
   ];
 
