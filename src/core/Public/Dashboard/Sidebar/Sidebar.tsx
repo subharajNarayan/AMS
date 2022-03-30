@@ -107,6 +107,13 @@ const Sidebar = (props: Props) => {
       link: "/auth/update-notification",
       icon: Notifications,
     },
+    {
+      name: "practice",
+      title: t("home:practice"),
+      link: "/auth/quality-test-parameters",
+      icon: ServiceIcon,
+    },
+    
 
     // {
     //   name: "service",
