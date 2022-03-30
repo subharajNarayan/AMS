@@ -212,6 +212,26 @@ const Sidebar = (props: Props) => {
         },
       ],
     },
+    {
+      name: "practice",
+      title: t("sidebar:practice"),
+      icon: ServiceIcon,
+      link: "",
+      children: [
+        {
+          name: "supplyvisualization",
+          title: t("sidebar:supplyVisualization"),
+          link: "/scheme/" + slug + "/supply-visualization",
+          icon: ServiceIcon,
+        },
+        {
+          name: "qualityTestResults",
+          title: t("qualityTestResult"),
+          link: "/scheme/" + slug + "/quality-test-results",
+          icon: ServiceIcon,
+        },
+      ]
+    }
   ];
 
   const checkParentActive = (item) => {
