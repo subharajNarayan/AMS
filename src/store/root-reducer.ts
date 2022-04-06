@@ -23,6 +23,7 @@ import component from "./modules/component";
 import componentInfo from "./modules/componentInfo";
 import notifications from "./modules/notifications";
 import componentLogs from "./modules/componentLogs";
+import practiceParametersData from "./modules/PracticeParameters";
 
 export const appReducer = combineReducers({
     i18nextData: i18nextReducer,
@@ -45,7 +46,8 @@ export const appReducer = combineReducers({
     component,
     componentInfo,
     notifications,
-    componentLogs
+    componentLogs,
+    practiceParametersData
 });
 
 export type RootState = ReturnType<typeof appReducer>;

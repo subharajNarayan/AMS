@@ -11,7 +11,10 @@ const Form = () => {
                             <label htmlFor="" className="mr-1">
                                 Parameters Name
                             </label>
-                            <input type='text' id='parameter_name' className='form-control'/>
+                            <input type='text' id='parameter_name' 
+                            className='form-control'
+                            
+                             />
                         </div>
                     </div>
                     <div className='col-md-3'>
@@ -19,7 +22,9 @@ const Form = () => {
                             <label htmlFor='' className='mr-1'>
                                 Unit:
                             </label>
-                            <input className='form-control'/>
+                            <input type="text" className='form-control'
+                            
+                            />
                         </div>
                     </div>
                     <div className='col-md-3'>
@@ -27,7 +32,9 @@ const Form = () => {
                             <label htmlFor='' className='mr-1'>
                                 NDWQ Standard:
                             </label>
-                            <input className='form-control'/>
+                            <input type="text" className='form-control'
+                            
+                            />
                         </div>
                     </div>
                     <div className='col-md-3'>
@@ -35,7 +42,7 @@ const Form = () => {
                             <label htmlFor='' className='mr-1'>
                                 Types
                             </label>
-                            <select className='form-control'>
+                            <select className='form-control' name='types'>
                                 <option>Chemical</option>
                                 <option>Others</option>
                             </select>

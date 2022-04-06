@@ -238,6 +238,47 @@ const apiDetails = {
       requestBodyType: RequestBodyType.AUTH
     },
   },
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  practiceParameters:{   /////////////practice parameter get method
+    getPracticeParameters: {
+      controllerName: "api/v1/test-parameter/",
+      actionName: "GET_TEST_PARAMETERS",
+      requestMethod: RequestMethod.GET,
+      requestBodyType: RequestBodyType.NOAUTH
+    },
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   waterScheme: {
     getSchemeDetails: {
       controllerName: "api/v1/water-scheme/detail/{slug}/",

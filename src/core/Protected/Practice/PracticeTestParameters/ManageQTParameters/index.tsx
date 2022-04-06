@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Form from "./Form";
-// import List from "./List";
+import List from "./List";
 
 interface Props {
   toggle?: any
@@ -15,7 +15,7 @@ const ManageQTParameters = (props: Props) => {
         <Form/>
       </div>
       <div className="col-12">
-        {/* <List setEditData={setEditData} toggle={props.toggle}/> */}
+        <List />
       </div>
     </div>
   );
