@@ -1,5 +1,5 @@
 import React from "react";
-import { ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { ModalFooter } from "reactstrap";
 import Modal from "reactstrap/lib/Modal";
 import Button from "components/UI/Forms/Buttons";
 import { confirmationMessage } from "i18n/i18n";

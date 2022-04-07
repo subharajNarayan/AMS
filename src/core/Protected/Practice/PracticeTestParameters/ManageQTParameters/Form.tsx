@@ -1,69 +1,197 @@
-import React from 'react';
-import { Button } from 'reactstrap';
+import FormikValidationError from "components/React/FormikValidationError/FormikValidationError";
+import toast from "components/React/ToastNotifier/ToastNotifier";
+import Button from "components/UI/Forms/Buttons";
+import { useFormik } from "formik";
+import React from "react";
+import { connect, ConnectedProps } from "react-redux";
+import { postPracticeParametersAction } from "store/modules/PracticeParameters/postPracticeParamters";
 
-const Form = () => {
-    return (
-        <div>
-            <form>
-                <div className='row align-items-center'>
-                    <div className='col-md-3'>
-                        <div className='form-group'>
-                            <label htmlFor="" className="mr-1">
-                                Parameters Name
-                            </label>
-                            <input type='text' id='parameter_name' 
-                            className='form-control'
-                            
-                             />
-                        </div>
-                    </div>
-                    <div className='col-md-3'>
-                        <div className='form-group'>
-                            <label htmlFor='' className='mr-1'>
-                                Unit:
-                            </label>
-                            <input type="text" className='form-control'
-                            
-                            />
-                        </div>
-                    </div>
-                    <div className='col-md-3'>
-                        <div className='form-group'>
-                            <label htmlFor='' className='mr-1'>
-                                NDWQ Standard:
-                            </label>
-                            <input type="text" className='form-control'
-                            
-                            />
-                        </div>
-                    </div>
-                    <div className='col-md-3'>
-                        <div className='form-group'>
-                            <label htmlFor='' className='mr-1'>
-                                Types
-                            </label>
-                            <select className='form-control' name='types'>
-                                <option>Chemical</option>
-                                <option>Others</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div className='col-md-12 text-right'>
-                        <Button type='submit' className='btn btn-primary' color='primary' 
-                            style={{padding: "8px 15px",
-                                    borderRadius: "5px", 
-                                    fontWeight: "bold", 
-                                    letterSpacing:"2px", 
-                                    fontSize: "0.9rem"}}
-                        >
-                            SAVE
-                        </Button>
-                    </div>
-                </div>
-            </form>
+// import { getPracticeParametersAction } from "store/modules/PracticeParameters/getTestParameters";
+// import { updateTestParametersAction } from "store/modules/PracticeParameters/updateTestParameters";
+import { RootState } from "store/root-reducer";
+import { practiceParametersInitialValues, practiceParametersValidationSchema } from "./schema";
+import { useTranslation } from "react-i18next";
+import { PARAMETER_TYPES_OPTIONS } from "constants/constants";
+import StyledSelect from "components/React/StyledSelect/StyledSelect";
+import TooltipLabel from "components/UI/TooltipLabel";
+
+// interface Props extends PropsFromRedux {
+//   editData: any;
+//   toggle: any;
+//   setEditData: any;
+// }
+
+const Form = (props) => {
+  const { t } = useTranslation();
+
+  const [initialData, seetInitialData] = React.useState<typeof practiceParametersInitialValues>(
+    practiceParametersInitialValues
+  );
+
+  React.useEffect(() => {
+    if (props.editData) {
+      seetInitialData({
+        ...props.editData,
+        types: PARAMETER_TYPES_OPTIONS.find((item) => item.value === props.editData.types) || null,
+      });
+    }
+  }, [props.editData]);
+
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    setFieldTouched,
+    setFieldValue,
+  } = useFormik({
+    enableReinitialize: true,
+    initialValues: initialData,
+    validationSchema: practiceParametersValidationSchema,
+    onSubmit: async (submitValue, { resetForm }) => {
+      let res;
+    //   if (props.editData) {
+    //     res = await props.updateTestParametersAction(props.editData.id, {
+    //       ...submitValue,
+    //       types: submitValue.types?.value,
+    //     });
+    //   } else {
+    //     res = await props.postPracticeParametersAction({
+    //       ...submitValue,
+    //       types: submitValue.types?.value,
+    //     });
+    //   }
+    if(props){
+        res = props.postPracticeParametersAction({
+            ...submitValue,
+            types: submitValue.types?.value,
+        })
+    }
+      if (res.status === 201 || res.status === 200) {
+        if (res.status === 201) {
+          resetForm();
+          toast.success(t("home:postSuccess"));
+        } 
+        // else {
+        //   props.setEditData(null);
+        //   seetInitialData(practiceParametersInitialValues);
+        //   toast.success(t("home:updateSuccess"));
+        // }
+        // props.getTestParametersAction();
+      } else {
+        const errors = Object.values(res.data)?.map((item: any) => {
+          toast.error(item[0]);
+        });
+      }
+    },
+  });
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit(e);
+      }}
+    >
+      <div className="row align-items-center">
+        <div className="col-md-3">
+          <div className="form-group ">
+            <label htmlFor="" className="mr-1">
+              {t("home:parameter")} {t("home:name")}:
+            </label>
+
+            <input
+              className="form-control"
+              name="parameter_name"
+              value={values.parameter_name}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <FormikValidationError name="parameter_name" errors={errors} touched={touched} />
+          </div>
         </div>
-    )
-}
+        <div className="col-md-3">
+          <div className="form-group ">
+            <label htmlFor="" className="mr-1">
+              {t("home:unit")}:
+            </label>
 
-export default Form
+            <input
+              className="form-control"
+              name="unit"
+              value={values.unit}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <FormikValidationError name="unit" errors={errors} touched={touched} />
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="form-group ">
+            <label htmlFor="" className="mr-1">
+              {t("home:ndwq")} <TooltipLabel id={"NDWQ"} text={`The quality standards for drinking water`} />:
+            </label>
+
+            <input
+              className="form-control"
+              name="NDWQS_standard"
+              value={values.NDWQS_standard}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <FormikValidationError name="NDWQS_standard" errors={errors} touched={touched} />
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="form-group ">
+            <label htmlFor="" className="mr-1">
+              {t("home:types")}:
+            </label>
+
+            <StyledSelect
+              name="types"
+              value={values?.types}
+              options={PARAMETER_TYPES_OPTIONS}
+              onChange={({ name, value }) => {
+                setFieldValue(name, value);
+              }}
+              onBlur={() => {
+                setFieldTouched("types", true);
+              }}
+            />
+            <FormikValidationError name="types" errors={errors} touched={touched} />
+          </div>
+        </div>
+
+        <div className="col-md-12 text-right">
+          <Button
+            className="btn custom-btn  mr-3"
+            text={t("home:save")}
+            disabled={props.loading}
+            loading={props.loading}
+          />
+        </div>
+      </div>
+    </form>
+  );
+};
+
+const mapStateToProps = (state: RootState) => ({
+  language: state.i18nextData.languageType,
+  loading:
+    state.testParamtersData.postTestParameters.isFetching 
+});
+
+const mapDispatchToProps = {
+//   getTestParametersAction,
+//   updateTestParametersAction,
+  postPracticeParametersAction,
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+// type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(Form);
