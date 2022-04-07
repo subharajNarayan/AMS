@@ -260,6 +260,12 @@ const apiDetails = {
       requestMethod: RequestMethod.GET,
       requestBodyType: RequestBodyType.NOAUTH
     },
+    deletePracticeParameters: {
+      controllerName: "api/v1/test-parameter/{id}/",
+      actionName: "DELETE_TEST_PARAMETERS",
+      requestMethod: RequestMethod.DELETE,
+      requestBodyType: RequestBodyType.AUTH
+    },
   },
 
 

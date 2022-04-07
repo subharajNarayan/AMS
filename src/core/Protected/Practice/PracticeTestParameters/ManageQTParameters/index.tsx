@@ -12,10 +12,10 @@ const ManageQTParameters = (props: Props) => {
   return (
     <div className="row">
       <div className="col-12">
-        <Form/>
+        <Form />
       </div>
       <div className="col-12">
-        <List />
+        <List setEditData={setEditData} toggle={props.toggle}/>
       </div>
     </div>
   );

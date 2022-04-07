@@ -3,14 +3,13 @@ import React from "react";
 import ManageQTParameters from "./ManageQTParameters";
 import { useTranslation } from "react-i18next";
 
-interface Props {}
 
-const PracticeTestParameters = (props: Props) => {
+const PracticeTestParameters = () => {
   const { t } = useTranslation("home");
-  // const [rateType, setRateType] = React.useState("1");
+  const [rateType, setRateType] = React.useState("1");
 
-  // console.log(rateType);
-
+  console.log(rateType);
+  
   return (
     <div className="container py-3 ">
       <div className="row">

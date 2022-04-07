@@ -1,22 +1,27 @@
-import { DeleteIcon, EditIconDark } from "assets/images/xd";
-import toast from "components/React/ToastNotifier/ToastNotifier";
 import React from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
-import { getTestParametersAction } from "store/modules/testParamters/getTestParameters";
-import { RootState } from "store/root-reducer";
 import { useTranslation } from "react-i18next";
+import { RootState } from "store/root-reducer";
 import { getNumberByLanguage } from "i18n/i18n";
+import { DeleteIcon, EditIconDark } from "assets/images/xd";
+import { connect, ConnectedProps, useDispatch, useSelector } from "react-redux";
+import toast from "components/React/ToastNotifier/ToastNotifier";
 import { getPracticeParametersAction } from "store/modules/PracticeParameters/getPracticeParameters";
+import { deletePracticeParametersAction } from "store/modules/PracticeParameters/deletePracticeParameters";
+import ConfirmationModal from "components/UI/ConfirmationModal";
+import useDeleteConfirmation from "hooks/useDeleteConfirmation";
 
-// interface Props extends PropsFromRedux {
-//   setEditData: any;
-//   toggle: any;
-// }
 
-const List = () => {
+// import { deleteTestParametersAction } from "store/modules/testParamters/deleteTestParameters";
+
+interface Props extends PropsFromRedux {
+  toggle: any;
+  setEditData: any;
+}
+
+const List = (props: Props) => {
   const { t } = useTranslation();
-//   const { editId, modal, handleDeleteClick, resetDeleteData, toggleModal } =
-//     useDeleteConfirmation();
+  const { editId, modal, handleDeleteClick, resetDeleteData, toggleModal } =
+  useDeleteConfirmation();
 
   const dispatch = useDispatch();
 
@@ -27,23 +32,23 @@ const List = () => {
   const PracticeParameters = useSelector(
     (state: RootState) => state.practiceParametersData.practiceParametersData.data
   );
-
-//   const deleteTestParameters = async () => {
-//     try {
-//       const response = await props.deleteTestParametersAction(editId);
-//       console.log(response, "response");
-//       if (response.status === 204) {
-//         toast.success(t("home:deleteSuccess"));
-//         props.getTestParametersAction();
-//         resetDeleteData();
-//       } else {
-//         toast.error(t("home:deleteError"));
-//         resetDeleteData();
-//       }
-//     } catch (error) {
-//       console.log(error, "error");
-//     }
-//   };
+  
+  const deletePracticeParameters = async () => {
+    try {
+      const response = await props.deletePracticeParametersAction(editId);
+      console.log(response, "success");
+      if (response.status === 204) {
+        toast.success(t("home:deleteSuccess"));
+        props.getPracticeParametersAction();
+        resetDeleteData();
+      } else {
+        toast.error(t("home:deleteError"));
+        resetDeleteData();
+      }
+    } catch (error) {
+      console.log(error, "error");
+    }
+  };
 
   return (
     <div className="data-table mt-4">
@@ -68,10 +73,10 @@ const List = () => {
                   <td>{item.NDWQS_standard || "-"}</td>
 
                   <td className="action justify-content-center">
-                    <div role="button" >
+                    <div role="button">
                       <img src={EditIconDark} alt="" className="mr-4" />
                     </div>
-                    <div role="button" >
+                    <div role="button" onClick={() => handleDeleteClick(item.id)}>
                       <img src={DeleteIcon} alt="" />
                     </div>
                   </td>
@@ -81,11 +86,11 @@ const List = () => {
         </table>
       </div>
 
-      {/* <ConfirmationModal
+      <ConfirmationModal
         open={modal}
         handleModal={() => toggleModal()}
-        handleConfirmClick={() => deleteTestParameters()}
-      /> */}
+        handleConfirmClick={() => deletePracticeParameters()}
+      />
     </div>
   );
 };
@@ -96,12 +101,12 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 const mapDispatchToProps = {
-//   deleteTestParametersAction,
-  getTestParametersAction,
+  getPracticeParametersAction,
+  deletePracticeParametersAction
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-// type PropsFromRedux = ConnectedProps<typeof connector>;
+type PropsFromRedux = ConnectedProps<typeof connector>;
 
 export default connector(List);
