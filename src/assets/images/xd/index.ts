@@ -18,6 +18,7 @@ import EditIconDark from './EditIcon.svg'
 import Notifications from './notifications.svg'
 import PrintIcon from './Print.svg'
 import QuestionIcon from './Question.svg'
+import practice from './practice.png'
 
 export {
     HomeIcon,
@@ -39,5 +40,6 @@ export {
     EditIconDark,
     Notifications,
     PrintIcon,
-    QuestionIcon
+    QuestionIcon,
+    practice
 }

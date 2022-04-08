@@ -60,6 +60,7 @@ const List = (props: Props) => {
               <th>{t("home:parameter")}</th>
               <th>{t("home:units")}</th>
               <th>{t("home:ndwq")}</th>
+              <th>{t("home:types")}</th>
               <th style={{ borderRadius: "0 5px 0 0" }}>{t("home:action")}</th>
             </tr>
           </thead>
@@ -71,6 +72,7 @@ const List = (props: Props) => {
                   <td> {item.parameter_name}</td>
                   <td> {item.unit || "-"}</td>
                   <td>{item.NDWQS_standard || "-"}</td>
+                  <td>{item.types}</td>
 
                   <td className="action justify-content-center">
                     <div role="button">

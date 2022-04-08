@@ -5,23 +5,21 @@ import { useFormik } from "formik";
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { postPracticeParametersAction } from "store/modules/PracticeParameters/postPracticeParamters";
-
-// import { getPracticeParametersAction } from "store/modules/PracticeParameters/getTestParameters";
-// import { updateTestParametersAction } from "store/modules/PracticeParameters/updateTestParameters";
 import { RootState } from "store/root-reducer";
+import { getPracticeParametersAction } from "store/modules/PracticeParameters/getPracticeParameters";
 import { practiceParametersInitialValues, practiceParametersValidationSchema } from "./schema";
 import { useTranslation } from "react-i18next";
 import { PARAMETER_TYPES_OPTIONS } from "constants/constants";
 import StyledSelect from "components/React/StyledSelect/StyledSelect";
 import TooltipLabel from "components/UI/TooltipLabel";
 
-// interface Props extends PropsFromRedux {
-//   editData: any;
-//   toggle: any;
-//   setEditData: any;
-// }
+interface Props extends PropsFromRedux {
+  editData: any;
+  toggle: any;
+  setEditData: any;
+}
 
-const Form = (props) => {
+const Form = (props: Props) => {
   const { t } = useTranslation();
 
   const [initialData, seetInitialData] = React.useState<typeof practiceParametersInitialValues>(
@@ -52,23 +50,18 @@ const Form = (props) => {
     validationSchema: practiceParametersValidationSchema,
     onSubmit: async (submitValue, { resetForm }) => {
       let res;
-    //   if (props.editData) {
-    //     res = await props.updateTestParametersAction(props.editData.id, {
-    //       ...submitValue,
-    //       types: submitValue.types?.value,
-    //     });
-    //   } else {
-    //     res = await props.postPracticeParametersAction({
-    //       ...submitValue,
-    //       types: submitValue.types?.value,
-    //     });
-    //   }
-    if(props){
-        res = props.postPracticeParametersAction({
-            ...submitValue,
-            types: submitValue.types?.value,
-        })
-    }
+      // if (props.editData) {
+      //   res = await props.updateTestParametersAction(props.editData.id, {
+      //     ...submitValue,
+      //     types: submitValue.types?.value,
+      //   });
+      // } 
+      if(props) {
+        res = await props.postPracticeParametersAction({
+          ...submitValue,
+          types: submitValue.types?.value,
+        });
+      }
       if (res.status === 201 || res.status === 200) {
         if (res.status === 201) {
           resetForm();
@@ -79,7 +72,7 @@ const Form = (props) => {
         //   seetInitialData(practiceParametersInitialValues);
         //   toast.success(t("home:updateSuccess"));
         // }
-        // props.getTestParametersAction();
+        props.getPracticeParametersAction();
       } else {
         const errors = Object.values(res.data)?.map((item: any) => {
           toast.error(item[0]);
@@ -185,13 +178,12 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 const mapDispatchToProps = {
-//   getTestParametersAction,
-//   updateTestParametersAction,
   postPracticeParametersAction,
+  getPracticeParametersAction
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-// type PropsFromRedux = ConnectedProps<typeof connector>;
+type PropsFromRedux = ConnectedProps<typeof connector>;
 
 export default connector(Form);

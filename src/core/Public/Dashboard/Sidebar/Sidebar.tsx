@@ -5,7 +5,8 @@ import {
   MaintainIcon,
   ServiceIcon,
   VisualizationIcon,
-  Notifications
+  Notifications,
+  EditIconDark
 } from "assets/images/xd";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -111,7 +112,7 @@ const Sidebar = (props: Props) => {
       name: "practice",
       title: t("home:practice"),
       link: "/auth/practice-test-parameters",
-      icon: ServiceIcon,
+      icon: EditIconDark,
     },
     
 
