@@ -57,6 +57,7 @@ const selectStyles: Partial<any> = {
     position: "absolute",
     right: 0,
     bottom: 0,
+    top: "2px",
   }),
   indicatorSeparator: (provided: CSSProperties) => ({
     ...provided,

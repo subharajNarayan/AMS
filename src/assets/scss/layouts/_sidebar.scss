@@ -14,9 +14,6 @@
     @include media-breakpoint-down(lg) {
         transform: translateX(calc(-1 * var(--sidebar-width)));
     }
-    // @include media-breakpoint-down(md) {
-    //   left: 0;
-    // }
     >.list-sidebar {
         height: 100%;
         overflow-y: auto;

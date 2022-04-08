@@ -144,6 +144,7 @@ const Form = (props: Props) => {
             </label>
 
             <StyledSelect
+             className="select-toggle"
               name="types"
               value={values?.types}
               options={PARAMETER_TYPES_OPTIONS}
