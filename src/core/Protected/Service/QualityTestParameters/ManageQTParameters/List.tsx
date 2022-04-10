@@ -74,7 +74,7 @@ const List = (props: Props) => {
                       <img src={EditIconDark} alt="" className="mr-4" />
                     </div>
                     <div role="button" onClick={() => handleDeleteClick(item.id)}>
-                      <img src={DeleteIcon} alt="" />
+                      <span> <img src={DeleteIcon} alt=""/> </span>
                     </div>
                   </td>
                 </tr>
