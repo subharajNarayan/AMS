@@ -53,7 +53,7 @@ const List = (props: Props) => {
         <table className="table mt-2">
           <thead>
             <tr>
-              <th style={{ borderRadius: "5px 0 0 0", width: "90px" }}>{t("home:sn")}</th>
+              <th style={{ borderRadius: "5px 0 0 0", width:"90px" }}>{t("home:sn")}</th>
               <th>{t("home:parameter")}</th>
               <th>{t("home:units")}</th>
               <th>{t("home:ndwq")}</th>
