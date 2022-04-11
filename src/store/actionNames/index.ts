@@ -272,6 +272,12 @@ const apiDetails = {
       requestMethod: RequestMethod.DELETE,
       requestBodyType: RequestBodyType.AUTH
     },
+    updatePracticeParameters: {
+      controllerName: "api/v1/test-parameter/{id}/",
+      actionName: "UPDATE_TEST_PARAMETERS",
+      requestMethod: RequestMethod.PUT,
+      requestBodyType: RequestBodyType.AUTH
+    }
   },
 
 

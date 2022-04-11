@@ -11,8 +11,6 @@ import ConfirmationModal from "components/UI/ConfirmationModal";
 import useDeleteConfirmation from "hooks/useDeleteConfirmation";
 
 
-// import { deleteTestParametersAction } from "store/modules/testParamters/deleteTestParameters";
-
 interface Props extends PropsFromRedux {
   toggle: any;
   setEditData: any;
@@ -75,7 +73,7 @@ const List = (props: Props) => {
                   <td>{item.types}</td>
 
                   <td className="action justify-content-center">
-                    <div role="button">
+                    <div role="button" onClick={() => props.setEditData(item)}>
                       <img src={EditIconDark} alt="" className="mr-4" />
                     </div>
                     <div role="button" onClick={() => handleDeleteClick(item.id)}>
