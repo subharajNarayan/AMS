@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { PARAMETER_TYPES_OPTIONS } from "constants/constants";
 import StyledSelect from "components/React/StyledSelect/StyledSelect";
 import TooltipLabel from "components/UI/TooltipLabel";
+import './forms.scss';
 
 interface Props extends PropsFromRedux {
   editData: any;
@@ -91,7 +92,7 @@ const Form = (props: Props) => {
       <div className="row align-items-center">
         <div className="col-md-3">
           <div className="form-group ">
-            <label htmlFor="" className="mr-1">
+            <label htmlFor="" className="mr-1 demo">
               {t("home:parameter")} {t("home:name")}:
             </label>
 
