@@ -23,7 +23,7 @@ $header-bg: #FFFFFF;
             @include des;
             font-weight: 400;
             @include media-breakpoint-down(sm) {
-                display: none;
+                display: block;
             }
         }
         i,
