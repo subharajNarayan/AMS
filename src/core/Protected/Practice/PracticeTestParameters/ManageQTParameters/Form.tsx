@@ -4,15 +4,15 @@ import Button from "components/UI/Forms/Buttons";
 import { useFormik } from "formik";
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { postPracticeParametersAction } from "store/modules/PracticeParameters/postPracticeParamters";
-import { RootState } from "store/root-reducer";
 import { getPracticeParametersAction } from "store/modules/PracticeParameters/getPracticeParameters";
+import { postPracticeParametersAction } from "store/modules/PracticeParameters/postPracticeParamters";
+import { updatePracticeParametersAction } from "store/modules/PracticeParameters/updatePracticeParameters";
+import { RootState } from "store/root-reducer";
 import { practiceParametersInitialValues, practiceParametersValidationSchema } from "./schema";
 import { useTranslation } from "react-i18next";
 import { PARAMETER_TYPES_OPTIONS } from "constants/constants";
 import StyledSelect from "components/React/StyledSelect/StyledSelect";
 import TooltipLabel from "components/UI/TooltipLabel";
-import './forms.scss';
 
 interface Props extends PropsFromRedux {
   editData: any;
@@ -51,13 +51,12 @@ const Form = (props: Props) => {
     validationSchema: practiceParametersValidationSchema,
     onSubmit: async (submitValue, { resetForm }) => {
       let res;
-      // if (props.editData) {
-      //   res = await props.updateTestParametersAction(props.editData.id, {
-      //     ...submitValue,
-      //     types: submitValue.types?.value,
-      //   });
-      // } 
-      if(props) {
+      if (props.editData) {
+        res = await props.updatePracticeParametersAction(props.editData.id, {
+          ...submitValue,
+          types: submitValue.types?.value,
+        });
+      } else {
         res = await props.postPracticeParametersAction({
           ...submitValue,
           types: submitValue.types?.value,
@@ -67,12 +66,11 @@ const Form = (props: Props) => {
         if (res.status === 201) {
           resetForm();
           toast.success(t("home:postSuccess"));
-        } 
-        // else {
-        //   props.setEditData(null);
-        //   seetInitialData(practiceParametersInitialValues);
-        //   toast.success(t("home:updateSuccess"));
-        // }
+        } else {
+          props.setEditData(null);
+          seetInitialData(practiceParametersInitialValues);
+          toast.success(t("home:updateSuccess"));
+        }
         props.getPracticeParametersAction();
       } else {
         const errors = Object.values(res.data)?.map((item: any) => {
@@ -92,7 +90,7 @@ const Form = (props: Props) => {
       <div className="row align-items-center">
         <div className="col-md-3">
           <div className="form-group ">
-            <label htmlFor="" className="mr-1 demo">
+            <label htmlFor="" className="mr-1">
               {t("home:parameter")} {t("home:name")}:
             </label>
 
@@ -145,7 +143,6 @@ const Form = (props: Props) => {
             </label>
 
             <StyledSelect
-             className="select-toggle"
               name="types"
               value={values?.types}
               options={PARAMETER_TYPES_OPTIONS}
@@ -176,12 +173,14 @@ const Form = (props: Props) => {
 const mapStateToProps = (state: RootState) => ({
   language: state.i18nextData.languageType,
   loading:
-    state.testParamtersData.postTestParameters.isFetching 
+    state.practiceParametersData.postPracticeParameters.isFetching ||
+    state.practiceParametersData.updatePracticeParameters.isFetching,
 });
 
 const mapDispatchToProps = {
+  getPracticeParametersAction,
+  updatePracticeParametersAction,
   postPracticeParametersAction,
-  getPracticeParametersAction
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);

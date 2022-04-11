@@ -7,7 +7,6 @@ import initDefaultReducer from "../../helper/default-reducer";
 import initialState from "../../helper/default-state";
 
 export type updateRequestData ={
-    id: string,
     parameter_name: string,
     unit: string,
     types: string,
