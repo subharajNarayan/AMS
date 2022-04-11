@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import { PARAMETER_TYPES_OPTIONS } from "constants/constants";
 import StyledSelect from "components/React/StyledSelect/StyledSelect";
 import TooltipLabel from "components/UI/TooltipLabel";
+import './forms.scss';
 
 interface Props extends PropsFromRedux {
   editData: any;
