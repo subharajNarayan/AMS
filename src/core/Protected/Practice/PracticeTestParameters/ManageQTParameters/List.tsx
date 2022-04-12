@@ -69,15 +69,15 @@ const List = (props: Props) => {
                   <td>{getNumberByLanguage(index + 1)}</td>
                   <td> {item.parameter_name}</td>
                   <td> {item.unit || "-"}</td>
-                  <td>{item.NDWQS_standard || "-"}</td>
+                  <td>{getNumberByLanguage(item.NDWQS_standard || "-")}</td>
                   <td>{item.types}</td>
 
                   <td className="action justify-content-center">
                     <div role="button" onClick={() => props.setEditData(item)}>
-                      <img src={EditIconDark} alt="" className="mr-4" />
+                      <img src={EditIconDark} alt="EDIT" className="mr-4" />
                     </div>
                     <div role="button" onClick={() => handleDeleteClick(item.id)}>
-                      <img src={DeleteIcon} alt="" />
+                      <img src={DeleteIcon} alt="DELETE" />
                     </div>
                   </td>
                 </tr>

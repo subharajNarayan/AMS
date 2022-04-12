@@ -77,7 +77,7 @@ const SupplyVIsualization = (props: Props) => {
     }
   }, [props.language, activeTab, props.schemeSlug, selectedYear, activeDate, props.schemeDetails]);
 
-  console.log(activeDate, "asdasdasdasdasdasd");
+  /* console.log(activeDate, "asdasdasdasdasdasd"); */
   return (
     <div className="container py-3 cash-book customCase">
       <GeneralCard title={t("sidebar:supplyVisualization")} print={true}>
@@ -197,7 +197,7 @@ const SupplyVIsualization = (props: Props) => {
                       key="yearGraph"
                     />
                   )}
-                </Col>{" "}
+                </Col>
               </Row>
             </TabPane>
             <TabPane tabId="3">
@@ -244,8 +244,8 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 const mapDispatchToProps = {
-  getWaterSupplyReportAction: getWaterSupplyReportAction,
-  getSchemeYearIntervalsAction: getSchemeYearIntervalsAction,
+  getWaterSupplyReportAction,
+  getSchemeYearIntervalsAction,
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);

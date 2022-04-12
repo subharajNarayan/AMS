@@ -37,7 +37,11 @@ const Sidebar = (props: Props) => {
   const { t } = useTranslation(["sidebar"]);
 
   const internalSidebarItems = [
-    { name: "home", title: t("sidebar:home"), link: "/auth/home", icon: HomeIcon },
+    { name: "home", 
+    title: t("sidebar:home"), 
+    link: "/auth/home", 
+    icon: HomeIcon 
+  },
     {
       name: "finance",
       title: t("sidebar:finance"),
