@@ -92,7 +92,7 @@ const Form = (props: Props) => {
         <div className="col-md-3">
           <div className="form-group ">
             <label htmlFor="" className="mr-1">
-              {t("home:parameter")} {t("home:name")}:
+              {t("home:parameter")} {t("home:name")} <span style={{color: "red", fontSize: "20px"}}> * </span> :
             </label>
 
             <input
@@ -108,7 +108,7 @@ const Form = (props: Props) => {
         <div className="col-md-3">
           <div className="form-group ">
             <label htmlFor="" className="mr-1">
-              {t("home:unit")}:
+              {t("home:unit")} <span style={{color: "red", fontSize: "20px"}}> * </span>:
             </label>
 
             <input

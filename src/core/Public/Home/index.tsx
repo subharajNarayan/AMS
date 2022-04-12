@@ -1,6 +1,5 @@
 import { HouseIcon, InstitutionIcon, UserGroupIcon } from "assets/images/xd";
 import { InfoCard } from "components/UI/InfoCard";
-import TooltipLabel from "components/UI/TooltipLabel";
 import { formatTime } from "core/Protected/Home/SupplySchedule";
 import { getNumberByLanguage } from "i18n/i18n";
 import React, { useEffect } from "react";
@@ -109,13 +108,6 @@ const HomeMain = (props: Iprops) => {
                     </div>
                   </div>
 
-                  {/* <div className="infoCard-details-item">
-                    <p className="infoCard-sub-title2">{t("home:publicTaps")}</p>
-                    <h6 className="infoCard-sub-price">
-                      <img src={UserGroupIcon} alt="" className="icon" />{" "}
-                      {incomeExpenseData?.public_taps}
-                    </h6>
-                  </div> */}
                 </div>
               </InfoCard>
             </div>
@@ -131,18 +123,6 @@ const HomeMain = (props: Iprops) => {
                 }
               >
                 <div className="infoCard-details"></div>
-
-                {/* <div className="infoCard-details">
-                  <div className="infoCard-details-item">
-                    <p className="infoCard-sub-title2">Daily planned</p>
-                    <h6 className="infoCard-sub-price">12,000 Ltrs</h6>
-                  </div>
-                  <div className="infoCard-details-item">
-                    <p className="infoCard-sub-title2">
-                      Overall Net Expenditure
-                    </p> 
-                  </div>
-                </div> */}
               </InfoCard>
             </div>
           </div>
