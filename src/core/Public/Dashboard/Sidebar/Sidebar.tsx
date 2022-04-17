@@ -223,6 +223,26 @@ const Sidebar = (props: Props) => {
           icon: ServiceIcon,
         },
       ],
+    },
+    {
+      name: "practice",
+      title: t("sidebar:practice"),
+      icon: EditIconDark,
+      link: "",
+      children: [
+        {
+          name: "practicevisualization",
+          title: t("sidebar:Practice Visualization"),
+          link: "/scheme/" + slug + "/practice-supply-visualization",
+          icon: ServiceIcon,
+        },
+        {
+          name: "practicequalityTestResults",
+          title: t("Practice QualityTestResult"),
+          link: "/scheme/" + slug + "/practice-quality-test-results",
+          icon: ServiceIcon,
+        },
+      ],
     }
   ];
 
@@ -278,7 +298,7 @@ const Sidebar = (props: Props) => {
                 <li key={item.name}>
                   <UncontrolledCollapse
                     toggler={`#${item.name}`}
-                    className="ml-3 menu__collapsable-sub collapse"
+                    className="ml-2 menu__collapsable-sub collapse"
                   >
                     {item.children.map((subitem) => (
                       <Link
