@@ -110,16 +110,23 @@ const appRoutes: CustomRoute[] = [
                 type: "authorized",
             },
             {
+                path: "/auth/update-notification",
+                component: InternalUpdateNotifications,
+                type: "authorized",
+            },
+            {
                 path: "/auth/practice-test-parameters",
                 component: InternalPracticeTestParameters,
                 type: "authorized",
             },
             {
-                path: "/auth/update-notification",
-                component: InternalUpdateNotifications,
-                type: "authorized",
+                path: "/scheme/:scheme/practic-supply-visualization",
+                component: SupplyVisualization,
             },
-
+            {
+                path: "/scheme/:scheme/practic-quality-test-results",
+                component: WaterTestResults,
+            },
 
             {
                 path: "/",

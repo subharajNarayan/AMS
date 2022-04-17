@@ -233,13 +233,13 @@ const Sidebar = (props: Props) => {
         {
           name: "practicevisualization",
           title: t("sidebar:Practice Visualization"),
-          link: "/scheme/" + slug + "/practice-supply-visualization",
+          link: "/scheme/" + slug + "/practic-supply-visualization",
           icon: ServiceIcon,
         },
         {
           name: "practicequalityTestResults",
-          title: t("Practice QualityTestResult"),
-          link: "/scheme/" + slug + "/practice-quality-test-results",
+          title: t("qualityTestResult"),
+          link: "/scheme/" + slug + "/practic-quality-test-results",
           icon: ServiceIcon,
         },
       ],
