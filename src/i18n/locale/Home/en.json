@@ -118,6 +118,7 @@
     "postError": "Couldnot post data.",
     "updateSuccess": "Data updated Successfully.",
     "updateError": "Couldnot update data.",
+    "error": "Component with this Name Already Exist",
     "currency": "Currency",
     "pin": "PIN",
     "rateInstitution": "Rate For Institution",

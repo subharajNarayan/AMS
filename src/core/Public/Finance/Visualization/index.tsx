@@ -74,6 +74,16 @@ const Visualization = (props: Props) => {
                   {t("home:thisYear")}
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink
+                  className={classnames({ active: activeTab === "3" })}
+                  onClick={() => {
+                    toggle("3");
+                  }}
+                >
+                  {t("home:thisMonth")}
+                </NavLink>
+              </NavItem>
             </Nav>
           </div>
 
