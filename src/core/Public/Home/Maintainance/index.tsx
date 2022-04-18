@@ -58,7 +58,7 @@ const Maintainance = (props: Props) => {
             </Nav>
 
             <span className="info-text">
-              {t("home:allAmountInRupee")} {props.currency}
+              {t("home:allAmountInRupee")} {t("home:rs")}
             </span>
           </div>
 
