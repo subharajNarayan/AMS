@@ -6,5 +6,7 @@
     "description": "Description",
     "previous-month-data": "Previous month data",
     "from-prev-month": "FROM PREVIOUS MONTH",
-    "total": "TOTAL"
+    "total": "TOTAL",
+    "datefrom": "Date From",
+    "dateto": "Date To"
 }

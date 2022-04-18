@@ -108,8 +108,8 @@ const CashBook = (props: Props) => {
                   <div className="col-4">
                     <div className="form-group my-0 mr-3">
                       <div className="row">
-                        <div className="col-4">
-                          <label htmlFor="">Date From</label>
+                        <div className="col-3">
+                          <label htmlFor="">{t("cashbook:datefrom")}</label>
                         </div>
                         <div className="col-8">
                           {props.schemeDetails?.system_date_format === "nep" ? (
@@ -137,8 +137,8 @@ const CashBook = (props: Props) => {
                   <div className="col-4">
                     <div className="form-group my-0 mr-3">
                       <div className="row">
-                        <div className="col-4">
-                          <label htmlFor="">Date To</label>
+                        <div className="col-3">
+                          <label htmlFor="">{t("cashbook:dateto")}</label>
                         </div>
                         <div className="col-8">
                           {props.schemeDetails?.system_date_format === "nep" ? (
@@ -199,9 +199,9 @@ const CashBook = (props: Props) => {
                   </div>
                 </>
               )}
-              <div className="col-4">
+              <div className="col-5">
                 <div className="d-flex">
-                  <div className="mr-2">
+                  <div className="mr-3">
                     <CustomRadio
                       label={t("finance:byDate")}
                       id="byDate"

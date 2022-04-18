@@ -6,5 +6,7 @@
     "description": "वर्णन",
     "previous-month-data": "अघिल्लो महिना डाटा",
     "from-prev-month": "अघिल्लो महिना बाट",
-    "total": "कुल"
+    "total": "कुल",
+    "datefrom": "मिति बाट",
+    "dateto": "मिति सम्म "
 }
