@@ -155,18 +155,6 @@ const HomeMain = (props: Iprops) => {
             <div className="home-right-card">
               <h6 className="home-right-title">{t("home:tariffRates")} </h6>
 
-              {/* {props.waterTarrifs?.map((tarrif) => (
-                <div className="home-right-info" key={tarrif.id}>
-                  <h6>
-                    {tarrif.unit_from}-{tarrif.unit_to} {t("home:unit")}
-                  </h6>
-                  <span>
-                    <p>
-                      {props.scheme?.currency} {tarrif.rate} | {t("home:unit")}
-                    </p>
-                  </span>
-                </div>
-              ))} */}
               <Tariff />
             </div>
             <div className="home-right-card">

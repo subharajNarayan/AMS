@@ -73,7 +73,7 @@ const Tariff = (props: IProps) => {
             <div className="tariff-header" id={"toggler" + index}>
               <h6>{getNumberByLanguage(item.apply_date)}</h6>
               <p>
-                {item.terif_type} <i className="ic-line-arrow-down icon"></i>
+              {t("home:fixed")}<i className="ic-line-arrow-down icon"></i>
               </p>
             </div>
 

@@ -20,5 +20,6 @@
     "assetComponent": "Expected risks, activities & Cost",
     "componentLogs": "Actual Maintenance (Logs)",
     "quality": "Water Quality and Quantity",
-    "inflationParam": "Inflation Rate(%)"
+    "inflationParam": "Inflation Rate(%)",
+    "practice": "Practice"
 }
