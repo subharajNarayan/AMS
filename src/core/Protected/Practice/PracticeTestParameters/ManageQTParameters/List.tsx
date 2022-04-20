@@ -69,7 +69,7 @@ const List = (props: Props) => {
                   <td>{getNumberByLanguage(index + 1)}</td>
                   <td> {item.parameter_name}</td>
                   <td> {item.unit || "-"}</td>
-                  <td>{getNumberByLanguage(item.NDWQS_standard || "-")}</td>
+                  <td> {item.NDWQS_standard || "-"}</td>
                   <td>{item.types}</td>
 
                   <td className="action justify-content-center">
