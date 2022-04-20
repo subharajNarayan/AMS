@@ -86,7 +86,7 @@ const HomeMain = (props: Iprops) => {
                     <div className="infoCard-details-item">
                       <p className="infoCard-sub-title2">{t("home:public")}</p>
                       <h6 className="infoCard-sub-price">
-                        <img src={UserGroupIcon} alt="public" className="icon" />{" "}
+                        <img src={UserGroupIcon} alt="public" className="icon" />
                         {incomeExpenseData?.public_connection}
                       </h6>
                     </div>
