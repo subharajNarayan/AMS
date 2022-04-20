@@ -13,7 +13,7 @@ import IncomeExpend from "./IncomeExpend";
 import Maintainance from "./Maintainance";
 import Tariff from "./Tariff";
 
-interface Iprops extends PropsFromRedux {}
+interface Iprops extends PropsFromRedux { }
 
 const HomeMain = (props: Iprops) => {
   const { language, schemeDetails, incomeExpenseData } = props;
@@ -74,9 +74,11 @@ const HomeMain = (props: Iprops) => {
                   <div className="col-6">
                     <div className="infoCard-details-item">
                       <p className="infoCard-sub-title2">{t("home:households")}</p>
-                      <h6 className="infoCard-sub-price">
-                        <img src={HouseIcon} alt="Household" className="icon" />{" "}
-                        {incomeExpenseData?.house_hold}
+                      <h6 className="infoCard-sub-price d-flex">
+                        <img src={HouseIcon} alt="Household" className="icon" />
+                        <p style={{fontSize: '14px', color: '#52575D', fontWeight: 'bold'}}>
+                          {incomeExpenseData?.house_hold}
+                        </p>
                       </h6>
                     </div>
                   </div>
@@ -84,7 +86,7 @@ const HomeMain = (props: Iprops) => {
                     <div className="infoCard-details-item">
                       <p className="infoCard-sub-title2">{t("home:public")}</p>
                       <h6 className="infoCard-sub-price">
-                        <img src={UserGroupIcon} alt="" className="icon" />{" "}
+                        <img src={UserGroupIcon} alt="public" className="icon" />{" "}
                         {incomeExpenseData?.public_connection}
                       </h6>
                     </div>
@@ -190,8 +192,8 @@ const HomeMain = (props: Iprops) => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 
