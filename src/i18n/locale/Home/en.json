@@ -138,6 +138,7 @@
     "mnb": "Maintenance Notify Before",
     "vsf": "Visualize data for",
     "practice": "Practice",
-    "fixed": "Fixed"
+    "fixed": "Fixed",
+    "servererror": "Internal Server Error"
 
 }

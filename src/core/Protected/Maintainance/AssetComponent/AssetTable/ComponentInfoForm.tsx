@@ -74,7 +74,7 @@ interface Props extends PropsFromRedux {
 }
 
 const ExpenseForm = (props: Props) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["home"]);
 
   const [initialData, setInitialData] = React.useState(initialFormValues);
   const [categoryOption, setCategoryOptions] = React.useState<OptionType[]>();
@@ -157,15 +157,16 @@ const ExpenseForm = (props: Props) => {
         delete requestData.componant_picture;
       }
 
-      let res;
+      let response;
       if (props.editData) {
-        res = await props.updateComponentInfoAction(props.language, props.editData.id, requestData);
+        response = await props.updateComponentInfoAction(props.language, props.editData.id, requestData);
       } else {
-        res = await props.postComponentInfoAction(props.language, requestData);
+        response = await props.postComponentInfoAction(props.language, requestData);
       }
 
-      if (res.status === 201 || res.status === 200) {
-        if (res.status === 201) {
+      if (response.status === 201 || response.status === 200) {
+        if (response.status === 201) {
+          resetForm();
           toast.success(t("home:postSuccess"));
         } else {
           toast.success(t("home:updateSuccess"));
@@ -174,10 +175,14 @@ const ExpenseForm = (props: Props) => {
         props.toggle(false);
         props.setEditData(null);
         props.getDashboardComponentInfoAction(props.language, props.schemeSlug);
-      } else {
-        const errors = Object.values(res.data)?.map((item: any) => {
-          toast.error(item[0]);
-        });
+      } else if (response.status === 400){
+        // const errors = Object.values(response.data)?.map((item: any) => {
+        //   toast.error(item[0]);
+        // });
+        alert(response.status)
+        toast.error(t("home:servererror"));
+      } else{
+        toast.error(t("home:error"))
       }
     },
   });
