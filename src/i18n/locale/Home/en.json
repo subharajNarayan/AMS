@@ -103,10 +103,10 @@
     "createNotifications": "Create Notifications",
     "notifications": "Notifications",
     "initialDate": "Initial Date",
-    "inp": "Income notifications period",
-    "enp": "Expenditure notifications period",
-    "trnp": "Test Result notifications period",
-    "srnp": "Supply Record notifications period",
+    "inp": "Income notifications period ",
+    "enp": "Expenditure notifications period ",
+    "trnp": "Test Result notifications period ",
+    "srnp": "Supply Record notifications period ",
     "parameter": "Parameter",
     "ndwq": "NDWQ Standard",
     "qtp": "Quality Test Parameters",
@@ -139,6 +139,6 @@
     "vsf": "Visualize data for",
     "practice": "Practice",
     "fixed": "Fixed",
-    "servererror": "Internal Server Error"
-
+    "servererror": "Internal Server Error",
+    "indays": "( In Days )"
 }

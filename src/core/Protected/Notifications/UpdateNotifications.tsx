@@ -131,7 +131,7 @@ const GeneralInfo = (props: Props) => {
                 <div className="col-lg-6">
                   <div className="form-group ">
                     <label htmlFor="" className="mr-1 ">
-                      {t("home:inp")}:
+                      {t("home:inp")} {t("home:indays")} :
                     </label>
 
                     <input
@@ -151,7 +151,7 @@ const GeneralInfo = (props: Props) => {
                 <div className="col-lg-6">
                   <div className="form-group ">
                     <label htmlFor="" className="mr-1 ">
-                      {t("home:enp")}:
+                      {t("home:enp")} {t("home:indays")} :
                     </label>
 
                     <input
@@ -171,7 +171,7 @@ const GeneralInfo = (props: Props) => {
                 <div className="col-lg-6">
                   <div className="form-group ">
                     <label htmlFor="" className="mr-1 ">
-                      {t("home:trnp")}:
+                      {t("home:trnp")} {t("home:indays")}:
                     </label>
 
                     <input
@@ -191,7 +191,7 @@ const GeneralInfo = (props: Props) => {
                 <div className="col-lg-6">
                   <div className="form-group ">
                     <label htmlFor="" className="mr-1 ">
-                      {t("home:srnp")}:
+                      {t("home:srnp")} {t("home:indays")}:
                     </label>
 
                     <input
