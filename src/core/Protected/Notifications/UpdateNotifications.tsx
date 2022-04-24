@@ -131,7 +131,7 @@ const GeneralInfo = (props: Props) => {
                 <div className="col-lg-6">
                   <div className="form-group ">
                     <label htmlFor="" className="mr-1 ">
-                      {t("home:inp")} {t("home:indays")} :
+                      {t("home:inp")} {t("home:indays")}:
                     </label>
 
                     <input
