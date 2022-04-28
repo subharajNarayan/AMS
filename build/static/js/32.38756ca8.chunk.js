@@ -1,1 +1,0 @@
-(this.webpackJsonpkhanipani=this.webpackJsonpkhanipani||[]).push([[32],{605:function(n,i,a){"use strict";a.r(i);var e=a(0),t=a.n(e);i.default=function(){return t.a.createElement("div",null,"index")}}}]);
