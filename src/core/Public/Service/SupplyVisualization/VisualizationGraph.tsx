@@ -109,7 +109,7 @@ const LineChart = (props: Props) => {
       left: "3%",
       right: "5%",
       bottom: "3%",
-      //   top: "6%",
+        top: "6%",
       containLabel: true,
     },
     xAxis: {

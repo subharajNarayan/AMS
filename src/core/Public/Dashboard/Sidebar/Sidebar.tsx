@@ -232,8 +232,8 @@ const Sidebar = (props: Props) => {
       children: [
         {
           name: "practicevisualization",
-          title: t("sidebar:Practice Visualization"),
-          link: "/scheme/" + slug + "/practic-supply-visualization",
+          title: t("sidebar:practicevisualization"),
+          link: "/scheme/" + slug + "/practic-visualization",
           icon: ServiceIcon,
         },
         {

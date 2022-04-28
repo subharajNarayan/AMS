@@ -21,5 +21,6 @@
     "componentLogs": "Actual Maintenance (Logs)",
     "quality": "Water Quality and Quantity",
     "inflationParam": "Inflation Rate(%)",
-    "practice": "Practice"
+    "practice": "Practice",
+    "practicevisualization": "Practice Visualization"
 }

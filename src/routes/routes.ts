@@ -8,6 +8,7 @@ const Visualization = lazy(() => import("core/Public/Finance/Visualization"));
 const CostVisualization = lazy(() => import("core/Public/Maintainance/CostVisualization"));
 const AssetComponent = lazy(() => import("core/Public/Maintainance/AssetComponent"));
 const SupplyVisualization = lazy(() => import("core/Public/Service/SupplyVisualization"));
+const PracticeVisualization = lazy(() => import("core/Public/Practice/PracticeVisualization"));
 const WaterTestResults = lazy(() => import("core/Public/Service/WaterTestResults"));
 const NotFound = lazy(() => import("core/Public/404"))
 
@@ -63,6 +64,9 @@ const appRoutes: CustomRoute[] = [
                 path: "/scheme/:scheme/quality-test-results",
                 component: WaterTestResults,
             },
+
+
+
 
             {
                 path: "/auth/home",
@@ -120,14 +124,13 @@ const appRoutes: CustomRoute[] = [
                 type: "authorized",
             },
             {
-                path: "/scheme/:scheme/practic-supply-visualization",
-                component: SupplyVisualization,
+                path: "/scheme/:scheme/practic-visualization",
+                component: PracticeVisualization,
             },
             {
                 path: "/scheme/:scheme/practic-quality-test-results",
                 component: WaterTestResults,
             },
-
             {
                 path: "/",
                 component: NotFound,
