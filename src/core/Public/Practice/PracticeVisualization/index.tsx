@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Col, Nav, NavItem, NavLink, Row, TabContent, TabPane } from "reactstrap";
 import classnames from "classnames";
 import NepaliDatePicker from "components/React/Datepicker/Datepicker";
@@ -23,23 +23,23 @@ interface Props extends PropsFromRedux {}
 const SupplyVIsualization = (props: Props) => {
   const { t } = useTranslation(["home"]);
 
-  const [yearOptions, setYearOptions] = React.useState<any>([]);
-  const [selectedYear, setSelectedYear] = React.useState<any>("");
+  const [yearOptions, setYearOptions] = useState<any>([]);
+  const [selectedYear, setSelectedYear] = useState<any>("");
 
-  const [activeTab, setActiveTab] = React.useState("1");
-  const [activeDate, setActiveDate] = React.useState<any>("");
+  const [activeTab, setActiveTab] = useState("1");
+  const [activeDate, setActiveDate] = useState<any>("");
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.language && props.schemeSlug) {
       props.getSchemeYearIntervalsAction(props.language, props.schemeSlug);
     }
   }, [props.language, props.schemeSlug]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.intervalData) {
       const intervalData = props.intervalData.map((item) => ({
         value: item.id,
@@ -49,7 +49,7 @@ const SupplyVIsualization = (props: Props) => {
     }
   }, [props.intervalData]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.schemeSlug && props.schemeDetails) {
       if (activeTab === "1") {
         props.getWaterSupplyReportAction(props.schemeSlug);
