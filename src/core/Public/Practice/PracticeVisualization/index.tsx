@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import { Col, Nav, NavItem, NavLink, Row, TabContent, TabPane } from "reactstrap";
 import classnames from "classnames";
 import NepaliDatePicker from "components/React/Datepicker/Datepicker";
-import { ADToBS, BSToAD } from "components/React/Datepicker/Datepickerutils";
 import EnglishDatePicker from "components/React/EnglishDatepicker/EnglishDatepicker";
 import StyledSelect from "components/React/StyledSelect/StyledSelect";
 import { GeneralCard } from "components/UI/GeneralCard";

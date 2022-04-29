@@ -8,7 +8,7 @@ const config = {
   name: "",
   type: "",
   smooth: true,
-  yAxisIndex: 0,
+  // yAxisIndex: 0,
   data: [],
 };
 
@@ -58,12 +58,12 @@ const VisualizationBarGraph = (props: Props) => {
   };
 
   useEffect(() => {
-    const selectedData = selected?.map((item, index) => ({
+    const selectedData = selected?.map((item) => ({
       ...config,
       name: props.options.find((opt) => opt.id === item)?.name || "",
       type: "bar",
       data: chartData && chartData[item],
-      yAxisIndex: index,
+     /* yAxisIndex: index, */
       itemStyle: {
         color: props.options.find((opt) => opt.id === item)?.color || "",
       },
