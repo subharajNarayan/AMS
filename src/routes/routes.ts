@@ -10,6 +10,7 @@ const AssetComponent = lazy(() => import("core/Public/Maintainance/AssetComponen
 const SupplyVisualization = lazy(() => import("core/Public/Service/SupplyVisualization"));
 const PracticeVisualization = lazy(() => import("core/Public/Practice/PracticeVisualization"));
 const WaterTestResults = lazy(() => import("core/Public/Service/WaterTestResults"));
+const WaterPracticeResults = lazy(() => import("core/Public/Practice/WaterPracticeResults"));
 const NotFound = lazy(() => import("core/Public/404"))
 
 const InternalHome = lazy(() => import("core/Protected/Home"));
@@ -129,7 +130,7 @@ const appRoutes: CustomRoute[] = [
             },
             {
                 path: "/scheme/:scheme/practic-quality-test-results",
-                component: WaterTestResults,
+                component: WaterPracticeResults,
             },
             {
                 path: "/",
