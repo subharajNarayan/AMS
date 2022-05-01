@@ -2,15 +2,7 @@ import classnames from "classnames";
 import { GeneralCard } from "components/UI/GeneralCard";
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import {
-  Col,
-  Nav,
-  NavItem,
-  NavLink,
-  Row,
-  TabContent,
-  TabPane,
-} from "reactstrap";
+import {Col, Nav, NavItem,  NavLink, Row, TabContent,  TabPane,} from "reactstrap";
 import { getWaterTestResultsAction } from "store/modules/report/waterTestResults";
 import { getTestParametersAction } from "store/modules/testParamters/getTestParameters";
 import { RootState } from "store/root-reducer";

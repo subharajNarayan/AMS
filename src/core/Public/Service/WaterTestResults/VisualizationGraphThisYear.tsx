@@ -187,13 +187,6 @@ const LineChart = (props: Props) => {
 
         {otherSeriesData &&
           otherSeriesData.map((item) => <GeneralChart minHeight={400} options={item} />)}
-        {/* {tableData?.length > 0 && props.type && (
-          <DataTable
-            years={chartData?.xAxis}
-            tableData={tableData}
-            type={props.type}
-          />
-        )} */}
       </div>
       <div className="col-md-3 chartOptions">
         <h6>Select</h6>

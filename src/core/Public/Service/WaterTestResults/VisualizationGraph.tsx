@@ -125,21 +125,7 @@ const LineChart = (props: Props) => {
 
     console.log(props.testParams, "**********");
 
-    // const selectedData = selected.map((item) => ({
-    //   ...config,
-    //   name: props.options.find((opt) => opt.id === item)?.name || "",
-    //   data: chartData && chartData[item],
-    //   itemStyle: {
-    //     color: props.options.find((opt) => opt.id === item)?.color || "",
-    //   },
-    // }));
-    // const tableData = selected.map((item) => ({
-    //   name: props.options.find((opt) => opt.id === item)?.name || "",
-    //   color: props.options.find((opt) => opt.id === item)?.color || "",
-    //   data: chartData && chartData[item],
-    // }));
-    // setSeriesData(selectedData);
-    // setTableData(tableData);
+
   }, [chartData, selected]);
 
   const chemicalSeriesOptionData = {
