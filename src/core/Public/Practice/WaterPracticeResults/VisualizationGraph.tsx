@@ -84,40 +84,56 @@ const LineChart = (props: Props) => {
             );
           }),
         });
-      } else {
-        const newChart = Object.assign(
-          {},
-          {
-            ...chartConfig,
-            xAxis: {
-              type: "category",
-              boundaryGap: false,
-              data: chartData?.xAxis,
-              axisLabel: {
-                formatter: function (name) {
-                  return name?.replace(props.type, "");
-                },
-              },
-            },
+      } 
+      // else {
+      //   const newChart = Object.assign(
+      //     {},
+      //     {
+      //       ...chartConfig,
+      //       xAxis: {
+      //         type: "category",
+      //         boundaryGap: false,
+      //         data: chartData?.xAxis,
+      //         axisLabel: {
+      //           formatter: function (name) {
+      //             return name?.replace(props.type, "");
+      //           },
+      //         },
+      //       },
 
-            series: [
-              {
-                name: testParam?.parameter_name,
-                type: "line",
-                smooth: true,
-                data: props.testResult?.map((item) => {
-                  return (
-                    item.data?.find(
-                      (single) => single.parameter__parameter_name === testParam?.parameter_name
-                    )?.total_value || 0
-                  );
-                }),
-              },
-            ],
-          }
-        );
-        otherCharts.push(newChart);
-      }
+      //       series: [
+      //         {
+      //           name: testParam?.parameter_name,
+      //           type: "line",
+      //           smooth: true,
+      //           data: props.testResult?.map((item) => {
+      //             return (
+      //               item.data?.find(
+      //                 (single) => single.parameter__parameter_name === testParam?.parameter_name
+      //               )?.total_value || 0
+      //             );
+      //           }),
+      //         },
+      //       ],
+      //     }
+      //   );
+      //   otherCharts.push(newChart);
+      // }
+
+      if (testParam?.types === "Other") {
+        otherCharts.push({
+          name: testParam?.parameter_name,
+          type: "line",
+          smooth: true,
+          data: props.testResult.map((item) => {
+            return (
+              item.data?.find(
+                (single) => single.parameter__parameter_name === testParam?.parameter_name
+              )?.total_value || 0
+            );
+          }),
+        });
+      } 
     });
 
     setSeriesData(chemicalSeries);
@@ -164,14 +180,48 @@ const LineChart = (props: Props) => {
   console.log(chartData, "seeeflleede");
   
 
+
+
+  const otherSeriesOptionData = {
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        type: "shadow",
+      },
+    },
+    legend: {
+      show: true,
+    },
+    grid: {
+      left: "3%",
+      right: "5%",
+      bottom: "3%",
+      //   top: "6%",
+      containLabel: true,
+    },
+    xAxis: {
+      type: "category",
+      boundaryGap: false,
+      data: chartData?.xAxis,
+      axisLabel: {
+        formatter: function (name) {
+          return name?.replace(props.type, "");
+        },
+      },
+    },
+    yAxis: {
+      type: "value",
+    },
+    series: otherSeriesData,
+  };
+
   return (
     <>
       <div className="row">
         <div className="col-md-9">
           <GeneralChart minHeight={400} options={chemicalSeriesOptionData} />
           <hr />
-          {otherSeriesData &&
-            otherSeriesData.map((item) => <GeneralChart minHeight={400} options={item} />)}
+          <GeneralChart minHeight={400} options={otherSeriesOptionData}/>
 
         </div>
         <div className="col-md-3 chartOptions">
