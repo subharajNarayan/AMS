@@ -162,55 +162,55 @@ const LineChart = (props: Props) => {
   };
 
   console.log(chartData, "seeeflleede");
+  
 
   return (
-    <div className="row">
-      <div className="col-md-9">
-        <GeneralChart minHeight={400} options={chemicalSeriesOptionData} />
+    <>
+      <div className="row">
+        <div className="col-md-9">
+          <GeneralChart minHeight={400} options={chemicalSeriesOptionData} />
+          <hr />
+          {otherSeriesData &&
+            otherSeriesData.map((item) => <GeneralChart minHeight={400} options={item} />)}
 
-        {otherSeriesData &&
-          otherSeriesData.map((item) => <GeneralChart minHeight={400} options={item} />)}
-        {/* {tableData?.length > 0 && props.type && (
-          <DataTable
-            years={chartData?.xAxis}
-            tableData={tableData}
-            type={props.type}
-          />
-        )} */}
+        </div>
+        <div className="col-md-3 chartOptions">
+          <h6>Select</h6>
+
+          <p>Chemicals</p>
+
+          <ul>
+            {practiceParams?.chemical.map((item) => (
+              <li key={item.id}>
+                <CustomCheckBox
+                  id={"" + item.id}
+                  label={item.parameter_name}
+                  onChange={(e) => handleSelect("" + item.parameter_name)}
+                  checked={selected.includes("" + item.parameter_name)}
+                />
+              </li>
+            ))}
+          </ul>
+
+          <hr style={{marginTop: "54px"}}/>
+
+          <p className="mt-2">Others</p>
+
+          <ul>
+            {practiceParams?.others.map((item) => (
+              <li key={item.id}>
+                <CustomCheckBox
+                  id={"" + item.id}
+                  label={item.parameter_name}
+                  onChange={(e) => handleSelect("" + item.parameter_name)}
+                  checked={selected.includes("" + item.parameter_name)}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className="col-md-3 chartOptions">
-        <h6>Select</h6>
-
-        <p>Chemicals</p>
-
-        <ul>
-          {practiceParams?.chemical.map((item) => (
-            <li key={item.id}>
-              <CustomCheckBox
-                id={"" + item.id}
-                label={item.parameter_name}
-                onChange={(e) => handleSelect("" + item.parameter_name)}
-                checked={selected.includes("" + item.parameter_name)}
-              />
-            </li>
-          ))}
-        </ul>
-        <p className="mt-3">Others</p>
-
-        <ul>
-          {practiceParams?.others.map((item) => (
-            <li key={item.id}>
-              <CustomCheckBox
-                id={"" + item.id}
-                label={item.parameter_name}
-                onChange={(e) => handleSelect("" + item.parameter_name)}
-                checked={selected.includes("" + item.parameter_name)}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    </>
   );
 };
 

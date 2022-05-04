@@ -184,6 +184,7 @@ const LineChart = (props: Props) => {
     <div className="row">
       <div className="col-md-9">
         <GeneralChart minHeight={400} options={chemicalSeriesOptionData} />
+        
 
         {otherSeriesData &&
           otherSeriesData.map((item) => <GeneralChart minHeight={400} options={item} />)}

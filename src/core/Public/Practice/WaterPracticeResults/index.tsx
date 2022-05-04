@@ -35,7 +35,7 @@ const WaterPracticeResults = (props: Props) => {
     else {
       props.getWaterTestResultsAction(props.schemeSlug, true);
     }
-  },[props.language, activeTab, props.schemeSlug])
+  },[activeTab, props.schemeSlug])
 
   return (
     <div className='container py-3 cash-book'>
