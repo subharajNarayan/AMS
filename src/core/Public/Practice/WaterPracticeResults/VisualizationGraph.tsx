@@ -69,7 +69,7 @@ const LineChart = (props: Props) => {
     const chemicalSeries: any = [];
     const otherCharts: any = [];
 
-    selected.forEach((item, index) => {
+    selected.forEach((item) => {
       const testParam = props.practiceParams?.find((param) => param.parameter_name === item);
       if (testParam?.types === "Chemical") {
         chemicalSeries.push({
@@ -84,7 +84,7 @@ const LineChart = (props: Props) => {
             );
           }),
         });
-      } 
+      }
       // else {
       //   const newChart = Object.assign(
       //     {},
@@ -120,7 +120,7 @@ const LineChart = (props: Props) => {
       //   otherCharts.push(newChart);
       // }
 
-      if (testParam?.types === "Other") {
+     else if (testParam?.types === "Other") {
         otherCharts.push({
           name: testParam?.parameter_name,
           type: "line",
@@ -222,6 +222,13 @@ const LineChart = (props: Props) => {
           <GeneralChart minHeight={400} options={chemicalSeriesOptionData} />
           <hr />
           <GeneralChart minHeight={400} options={otherSeriesOptionData}/>
+
+
+          
+          {/* <hr />
+          {
+            otherSeriesData && otherSeriesData.map((item) => <GeneralChart minHeight={400} options={item}/>)
+          } */}
 
         </div>
         <div className="col-md-3 chartOptions">
