@@ -212,7 +212,7 @@ keeping or in any financial projection.`}
             <div className="col-lg-4">
               <div className="form-group ">
                 <label htmlFor="" className="mr-1">
-                  {t("home:dailyTarget")}{" "}
+                  {t("home:dailyTarget")} ({t("home:litre")}) {" "}
                   <TooltipLabel id={"twspd"} text={`Total water supply (in liters) per day `} />:
                 </label>
 
