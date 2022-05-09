@@ -152,6 +152,16 @@ const Form = (props: Props) => {
             <FormikValidationError name="time_to" errors={errors} touched={touched} />
           </div>
         </div>
+        <div className="col-md-4">
+          <div className="form-group">
+            <label htmlFor="" className="mr-1 ">
+              Comment :
+            </label>
+
+            <input className="form-control" name="comment" value={values.comment} onChange={handleChange} />
+            <FormikValidationError name="comment" errors={errors} touched={touched} />
+          </div>
+        </div>
 
         <div className="col-12 text-right">
           <div className="pl-md-5 mt-3">
