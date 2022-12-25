@@ -1,0 +1,10 @@
+{
+    "cashbook":"क्यास्बुक",
+    "income": "आम्दानी",
+    "expenditure": "खर्च",
+    "date": "मिति",
+    "description": "विवरण",
+    "previous-month-data": "अघिल्लो महिनाको डाटा",
+    "from-prev-month": "अघिल्लो महिनाबाट",
+    "total": "कुल"
+}
