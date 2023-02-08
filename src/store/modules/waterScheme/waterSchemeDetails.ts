@@ -21,6 +21,7 @@ export type TestParametersType = {
     tool_start_date: string 
     currency: string 
     water_source: string
+    help_url: string
 }
 
 const apiDetails = Object.freeze(apiList.waterScheme.getSchemeDetails);

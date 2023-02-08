@@ -14,11 +14,14 @@ import { useTranslation } from "react-i18next";
 import { connect, ConnectedProps } from "react-redux";
 import { getTestParametersAction } from "store/modules/testParamters/getTestParameters";
 import { getWaterSupplyTestAction } from "store/modules/waterSupplyTest/getWaterSupplyTest";
-import { postWaterSupplyTestAction } from "store/modules/waterSupplyTest/postWaterSupplyTest";
+// import { postWaterSupplyTestAction } from "store/modules/waterSupplyTest/postWaterSupplyTest";
+import { postWaterTestResultAction } from "store/modules/waterSupplyTest/postWaterTestResults";
 import { updateWaterSupplyTestAction } from "store/modules/waterSupplyTest/updateWaterSupplyTest";
 import { RootState } from "store/root-reducer";
 import formatDate from "utils/utilsFunction/date-converter";
 import { waterTestInitialValues, waterTestValidationSchema } from "./schema";
+import CustomCheckBox from "components/UI/CustomCheckbox";
+import TooltipLabel from "components/UI/TooltipLabel";
 
 interface Props extends PropsFromRedux {
   editData: any;
@@ -28,6 +31,7 @@ interface Props extends PropsFromRedux {
 
 const Form = (props: Props) => {
   const { t } = useTranslation();
+  const [ dateRange, setDateRange ] = React.useState(false);
 
   const [initialData, setInitialData] =
     React.useState<typeof waterTestInitialValues>(waterTestInitialValues);
@@ -36,7 +40,8 @@ const Form = (props: Props) => {
     if (props.editData) {
       console.log(props.editData, ":editData")
       setInitialData({
-        date: props.editData?.date,
+        date_from: props.editData?.date_from,
+        date_to: props.editData?.date_to,
         test_result_parameter: props.editData?.test_result_parameter?.map((item) => ({
           parameter: item.parameter,
           parameter_name: item.name,
@@ -45,11 +50,12 @@ const Form = (props: Props) => {
       });
     } else if (props.testParamsData) {
       const initialValues = {
-        date: "",
+        date_from: "",
+        date_to: "",
         test_result_parameter: props.testParamsData.map((item) => ({
           parameter: item.id,
           parameter_name: item.parameter_name,
-          value: "",
+          value: null as any,
         })),
       };
       setInitialData(initialValues);
@@ -72,7 +78,7 @@ const Form = (props: Props) => {
         })),
       });
     } else {
-      res = await props.postWaterSupplyTestAction(props.language, {
+      res = await props.postWaterTestResultAction(props.language, {
         ...submitValue,
         test_result_parameter: submitValue?.test_result_parameter?.map((item) => ({
           value: item?.value,
@@ -127,24 +133,69 @@ const Form = (props: Props) => {
                 {props.schemeDetails?.system_date_format === "nep" ? (
                   <NepaliDatePicker
                     className="form-control"
-                    name="date"
-                    value={values.date}
+                    name="date_from"
+                    value={values.date_from}
                     onChange={(e) => {
-                      setFieldValue("date", e);
+                      setFieldValue("date_from", e);
                     }}
                   />
                 ) : (
                   <EnglishDatePicker
-                    name="date"
-                    value={values.date}
+                    name="date_from"
+                    value={values.date_from}
                     handleChange={(e) => {
-                      setFieldValue("date", formatDate(e));
+                      setFieldValue("date_from", formatDate(e));
                     }}
                   />
                 )}
-                <FormikValidationError name="date" errors={errors} touched={touched} />
+                <FormikValidationError name="date_from" errors={errors} touched={touched} />
               </div>
             </div>
+
+            <div className="col-md-2">
+              <div className="form-group mt-5 d-flex">
+                <CustomCheckBox
+                  id={"date_to"}
+                  label={t("home:addaterange")}
+                  // onChange={(e) => setFieldValue("atdaterange", e.target.checked)} 
+                  onClick={(e) => setDateRange(!dateRange)}
+                  />
+              </div>
+            </div>
+
+            {dateRange && (
+              <div className="col-lg-3">
+                <div className="form-group ">
+                  <label htmlFor="" className="mr-1">
+                    {t("home:addaterange")} :
+                  </label>
+
+                  {props.schemeDetails?.system_date_format === "nep" ? (
+                    <NepaliDatePicker
+                      className="form-control"
+                      name="date_to"
+                      value={values.date_to}
+                      onChange={(e) => {
+                        setFieldValue("date_to", e);
+                      }}
+                    />
+                  ) : (
+                    <EnglishDatePicker
+                      name="date_to"
+                      value={values.date_to}
+                      handleChange={(e) => {
+                        setFieldValue("date_to", formatDate(e));
+                      }}
+                    />
+                  )}
+                  {/* <FormikValidationError name="date_to" errors={errors} touched={touched} /> */}
+                </div>
+              </div>
+            )}
+
+
+
+
 
             <FieldArray
               name="test_result_parameter"
@@ -216,7 +267,7 @@ const mapStateToProps = (state: RootState) => ({
 const mapDispatchToProps = {
   getTestParametersAction,
   updateWaterSupplyTestAction: updateWaterSupplyTestAction,
-  postWaterSupplyTestAction: postWaterSupplyTestAction,
+  postWaterTestResultAction: postWaterTestResultAction,
   getWaterSupplyTestAction: getWaterSupplyTestAction,
 };
 

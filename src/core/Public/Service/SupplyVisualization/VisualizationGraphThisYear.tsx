@@ -64,13 +64,14 @@ const LineChart = (props: Props) => {
         
         total_supply_avg: fiscalYearArray?.map((item) => {
           return (
-            props.waterSupplyData?.supply?.find((inc) => {
-              return +inc.supply_date__month < 10
-                ? +inc.supply_date__month?.toString()?.replace("0", "") === item
-                : +inc.supply_date__month === item;
-            })?.total_supply_average || 0
+            props.waterSupplyData?.average?.find((inc) => {
+              return +inc.month < 10
+                ? +inc.month?.toString()?.replace("0", "") === item
+                : +inc.month === item;
+            })?.supply_average || 0
           );
-        }),
+          
+        }),        
         total_supply: fiscalYearArray?.map((item) => {
           return (
             props.waterSupplyData?.supply?.find((inc) => {

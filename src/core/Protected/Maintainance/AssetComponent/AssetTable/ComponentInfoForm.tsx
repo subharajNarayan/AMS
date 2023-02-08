@@ -355,7 +355,7 @@ const ExpenseForm = (props: Props) => {
           <div className="col-lg-4">
             <div className="form-group ">
               <label htmlFor="" className="mr-1">
-                {t("home:maintainance")} {t("home:cost")} ({props.scheme?.currency}):
+              {t("home:compexpected")} {t("home:maintenance")} {t("home:cost")} ({props.scheme?.currency}):
               </label>
 
               <input

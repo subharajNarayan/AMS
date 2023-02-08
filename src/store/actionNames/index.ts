@@ -768,6 +768,13 @@ const apiDetails = {
       requestMethod: RequestMethod.POST,
       requestBodyType: RequestBodyType.AUTH,
     },
+    postWaterTestResult: {
+      controllerName:
+        "api/v1/water-test-results/{lang}/create/",
+      actionName: "POST_WATER_TEST_RESULTS",
+      requestMethod: RequestMethod.POST,
+      requestBodyType: RequestBodyType.AUTH,
+    },
     updateWaterSupplyTest: {
       controllerName:
         "api/v1/config/water-test-results/{lang}/{id}/",

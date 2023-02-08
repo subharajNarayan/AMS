@@ -21,7 +21,7 @@ type ChartDataType = {
 interface Props extends PropsFromRedux {
   type?: string;
   compareKey: string;
-  defaultSelected: string[];
+  defaultSelected: number[];
 }
 
 const LineChart = (props: Props) => {
@@ -31,7 +31,7 @@ const LineChart = (props: Props) => {
     others: TestParametersType;
   }>();
 
-  const [selected, setSelected] = useState<string[]>(props.defaultSelected);
+  const [selected, setSelected] = useState<number[]>(props.defaultSelected);
   const [chartData, setChartData] = useState<ChartDataType>();
 
   const [seriesData, setSeriesData] = useState<SeriesConfig[]>();
@@ -65,12 +65,12 @@ const LineChart = (props: Props) => {
     }
   }, [props.testResult]);
 
-  const handleSelect = (name: string) => {
-    if (selected?.includes(name)) {
-      const filteredData = selected.filter((item) => item !== name);
+  const handleSelect = (id: number) => {
+    if (selected?.includes(id)) {
+      const filteredData = selected.filter((item) => item !== id);
       setSelected(filteredData);
     } else {
-      setSelected([...selected, name]);
+      setSelected([...selected, id]);
     }
   };
 
@@ -80,10 +80,10 @@ const LineChart = (props: Props) => {
     const otherCharts: any = [];
 
     selected.forEach((item, index) => {
-      const testParam = props.testParams?.find((param) => param.parameter_name === item);
+      const testParam = props.testParams?.find((param) => param.id === item);
       if (testParam?.types === "Chemical") {
         chemicalSeries.push({
-          name: testParam?.parameter_name + `( ${testParam?.unit} )`,
+          name: testParam?.parameter_name + `( ${testParam?.unit} ) (Standard ${testParam?.NDWQS_standard})`,
           type: "line",
           smooth: true,
           data: props.testResult.map((item) => {
@@ -123,7 +123,7 @@ const LineChart = (props: Props) => {
 
             series: [
               {
-                name: testParam?.parameter_name + `( ${testParam?.unit} )`,
+                name: testParam?.parameter_name + `( ${testParam?.unit} ) (Standard ${testParam?.NDWQS_standard})`,
                 type: "line",
                 smooth: true,
                 data: props.testResult.map((item) => {
@@ -225,8 +225,8 @@ const LineChart = (props: Props) => {
               <CustomCheckBox
                 id={"" + item.id}
                 label={item.parameter_name}
-                onChange={(e) => handleSelect("" + item.parameter_name)}
-                checked={selected.includes("" + item.parameter_name)}
+                onChange={(e) => handleSelect(item.id)}
+                checked={selected.includes(item.id)}
               />
             </li>
           ))}
@@ -240,8 +240,8 @@ const LineChart = (props: Props) => {
               <CustomCheckBox
                 id={"" + item.id}
                 label={item.parameter_name}
-                onChange={(e) => handleSelect("" + item.parameter_name)}
-                checked={selected.includes("" + item.parameter_name)}
+                onChange={(e) => handleSelect(item.id)}
+                checked={selected.includes(item.id)}
               />
             </li>
           ))}
@@ -254,8 +254,8 @@ const LineChart = (props: Props) => {
               <CustomCheckBox
                 id={"" + item.id}
                 label={item.parameter_name}
-                onChange={(e) => handleSelect("" + item.parameter_name)}
-                checked={selected.includes("" + item.parameter_name)}
+                onChange={(e) => handleSelect(item.id)}
+                checked={selected.includes(item.id)}
               />
             </li>
           ))}

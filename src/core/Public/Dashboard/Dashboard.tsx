@@ -29,7 +29,7 @@ function Dashboard(props: Props): ReactElement {
     if (containsSchemeInUrl) {
       const route = window.location.hash.split("/")[2];
       const response = await props.getWaterSchemeDetailsAction(route);
-
+      
       if (response.data && response.status !== 400) {
         props.updateSchemeNameAction(route);
         props.getSchemeYearIntervalsAction(props.langauge, route);

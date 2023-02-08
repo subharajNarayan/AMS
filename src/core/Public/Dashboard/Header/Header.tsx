@@ -8,6 +8,7 @@ import NEP from "assets/images/USAFLAG.png";
 import ENG from "assets/images/NPFLAG.png";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from "reactstrap";
 import useAuthentication from "services/authentication/AuthenticationService";
+import { getWaterSchemeDetailsAction } from "store/modules/waterScheme/waterSchemeDetails";
 
 interface Props {
   sidebarToggle: boolean;
@@ -21,10 +22,14 @@ const Header = (props: Props) => {
   const languageFormat = useSelector(
     (state: RootState) => state.waterSchemeData.waterSchemeDetailsData.data?.system_date_format
   );
+  const help = useSelector(
+    (state: RootState) => state.waterSchemeData.waterSchemeDetailsData.data?.help_url
+  );
+  
   const dispatch = useDispatch();
 
   const userDetails = useSelector((state: RootState) => state.userDetails);
-
+  
   const initLogout = () => dispatch(logoutAction());
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -33,14 +38,27 @@ const Header = (props: Props) => {
   const togglesidebar = () => setsidebarToggle(!sidebarToggle);
 
   console.log(languageFormat, "languageFormat");
+
+  React.useEffect(() => {
+    if (userDetails?.slug) {
+      dispatch(getWaterSchemeDetailsAction(userDetails?.slug));
+    }
+  }, [userDetails]);
+
   return (
     <header className="header">
       <div className="d-flex justify-content-between align-items-center">
         <div className="d-flex align-items-center">
           <a className="ic-menu text-white toggler" onClick={togglesidebar}></a>
         </div>
-
         <div className="list list__inline list-separator">
+           <div className="list-help_info">
+            <a href={help} target="_blank" >Help ?</a>
+          </div>
+          <div className="list-dashboard_info">
+            <a href="#" target="_blank" >Web Dashboard</a>
+          </div>
+        
           <div className="d-flex align-items-center">
             <i className="ic-calendar  mr-1"> </i>
 

@@ -345,7 +345,7 @@ const ComponentLists = (props: Props) => {
             <label htmlFor="" className="mr-1 ">
               {/* {t("home:maintainance")} {t("home:action")} */}
               {/* {t("home:proposed")}: */}
-              {props.logType ? (`${t("home:maintenance")} ${t("home:action")} ${t("home:proposed")}`) : (`${t("home:maintenance")} ${t("home:action")} ${t("home:executed")}`)}
+              {props.logType ? (`${t("home:maintenance")} ${t("home:action")} ${t("home:proposed")}`) : (`${t("home:maintenance")} ${t("home:action")}`)}
             </label>
 
             <input
